@@ -9,11 +9,58 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "class",
+                "format": [
+                    "PascalCase"
+                ]
+            },
+            {
+                "selector": "default",
+                "format": [
+                    "camelCase"
+                ]
+            },
+            {
+                "selector": "variable",
+                "format": [
+                    "camelCase",
+                    "UPPER_CASE"
+                ]
+            },
+            {
+                "selector": "parameter",
+                "format": [
+                    "camelCase"
+                ],
+                "leadingUnderscore": "allow"
+            },
+            {
+                "selector": "memberLike",
+                "modifiers": [
+                    "private"
+                ],
+                "format": [
+                    "camelCase"
+                ],
+                "leadingUnderscore": "require"
+            },
+            {
+                "selector": "typeLike",
+                "format": [
+                    "PascalCase"
+                ]
+            }
+        ],
         "@typescript-eslint/class-name-casing": "warn",
-        "@typescript-eslint/semi": "warn",
+        "@typescript-eslint/semi": [
+            "error",
+            "never"
+        ],
         "curly": "warn",
         "eqeqeq": "warn",
-        "no-throw-literal": "warn",
-        "semi": "off"
+        "no-throw-literal": "warn"
     }
 }
