@@ -17,21 +17,44 @@
 		"commands": [
 			{
 				"command": "title-separator-cycle.changeSeparatorRandom",
-				"title": "Change separator (Random)"
+				"title": "Title Separator: Change separator (Random)"
 			},
 			{
 				"command": "title-separator-cycle.changeSeparatorCycle",
-				"title": "Change separator (Cycle)"
+				"title": "Title Separator: Change separator (Cycle)"
 			},
 			{
 				"command": "title-separator-cycle.chooseSeparator",
-				"title": "Choose separator from list"
+				"title": "Title Separator: Choose separator from list"
 			},
 			{
 				"command": "title-separator-cycle.toggleChange",
-				"title": "Toggle change upon startup"
+				"title": "Title Separator: Toggle change upon startup"
 			}
 		]
+	},
+	"configuration": {
+		"title": "Title Separator Cycle",
+		"properties": {
+			"title-separator-cycle.mode": {
+				"type": "string",
+				"default": "random",
+				"enum": [
+					"cycle",
+					"random"
+				],
+				"enumDescriptions": [
+					"Cycle between the different characters",
+					"Pick a random character each time"
+				],
+				"description": "Cycle or random?"
+			},
+			"title-separator-cycle.runOnStartup": {
+				"type": "boolean",
+				"default": true,
+				"description": "Toggle run on startup"
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
