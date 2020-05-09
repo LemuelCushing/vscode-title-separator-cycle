@@ -14,6 +14,13 @@
 		"*"
 	],
 	"main": "./out/extension.js",
+	"keywords": [
+		"title separator",
+		"ui",
+		"useless",
+		"vscode",
+		"vscode-extension"
+	],
 	"contributes": {
 		"commands": [
 			{
@@ -32,28 +39,28 @@
 				"command": "title-separator-cycle.toggleChange",
 				"title": "Title Separator: Toggle change upon startup"
 			}
-		]
-	},
-	"configuration": {
-		"title": "Title Separator Cycle",
-		"properties": {
-			"title-separator-cycle.mode": {
-				"type": "string",
-				"default": "random",
-				"enum": [
-					"cycle",
-					"random"
-				],
-				"enumDescriptions": [
-					"Cycle between the different characters",
-					"Pick a random character each time"
-				],
-				"description": "Cycle or random?"
-			},
-			"title-separator-cycle.runOnStartup": {
-				"type": "boolean",
-				"default": true,
-				"description": "Toggle run on startup"
+		],
+		"configuration": {
+			"title": "Title Separator Cycle",
+			"properties": {
+				"title-separator-cycle.mode": {
+					"type": "string",
+					"default": "random",
+					"enum": [
+						"cycle",
+						"random"
+					],
+					"enumDescriptions": [
+						"Cycle between the different characters",
+						"Pick a random character each time"
+					],
+					"description": "Cycle or random?"
+				},
+				"title-separator-cycle.runOnStartup": {
+					"type": "boolean",
+					"default": true,
+					"description": "Toggle run on startup"
+				}
 			}
 		}
 	},

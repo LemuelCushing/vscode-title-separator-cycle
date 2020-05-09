@@ -3,6 +3,7 @@ import { characters } from "./characters.json"
 
 let info = (msg: string): Thenable<String | undefined> => vscode.window.showInformationMessage(msg)
 
+//Configurations getters & setters
 const titleSeparatorSetting: string = "window.titleSeparator"
 const extPrefers = vscode.workspace.getConfiguration("title-separator-cycle")
 const workspaceConfig = vscode.workspace.getConfiguration()
@@ -14,12 +15,12 @@ let separator: string | undefined = getSeparator()
 
 export function activate(context: vscode.ExtensionContext) {
 
+	// shorthand function for command registration boilerplate 
 	let registerCommand = (command: string, call: (...args: any[]) => any) => context.subscriptions.push(
 		vscode.commands.registerCommand(`title-separator-cycle.${command}`, call)
 	)
 
-	// TODO: figure out why default settings are undefined (at least in test)
-	if (runOnStartup === true || runOnStartup === undefined) {
+	if (runOnStartup === true) {
 		switch (mode) {
 			case "random":
 				separator = getRandomCharacter()
