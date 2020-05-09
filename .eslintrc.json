@@ -52,6 +52,12 @@
                 "format": [
                     "PascalCase"
                 ]
+            },
+            {
+                "selector": "enumMember",
+                "format": [
+                    "PascalCase"
+                ]
             }
         ],
         "@typescript-eslint/class-name-casing": "warn",
