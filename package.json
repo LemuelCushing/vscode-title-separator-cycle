@@ -3,7 +3,7 @@
 	"displayName": "Title Separator Cycle",
 	"description": "An essential tool - changes the title separator upon startup",
 	"publisher": "LemuelCushing",
-	"version": "0.0.1",
+	"version": "0.5.0",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
