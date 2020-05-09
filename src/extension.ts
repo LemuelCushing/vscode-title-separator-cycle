@@ -22,15 +22,13 @@ export function activate(context: vscode.ExtensionContext) {
 
 	if (runOnStartup === true) {
 		switch (mode) {
-			case "random":
-				separator = getRandomCharacter()
+			case "cycle":
+				separator = getNextCharacter()
 				setSeparator(separator)
 				break
-			case "cycle":
-				setSeparator(getNextCharacter())
-				break
-			default:
-				setSeparator(getRandomCharacter())
+			default: // Case "random"
+				separator = getRandomCharacter()
+				setSeparator(separator)
 				break
 		}
 	}
@@ -39,7 +37,6 @@ export function activate(context: vscode.ExtensionContext) {
 		return characters[Math.floor(Math.random() * characters.length)]
 	}
 	function getNextCharacter(): string {
-		info(`s:${separator} i:${characters.indexOf(`${separator}`)}`)
 		let currentIndex = characters.indexOf(`${separator}`) + 1
 		return characters[currentIndex] ? characters[currentIndex] : characters[0]
 	}
@@ -54,7 +51,10 @@ export function activate(context: vscode.ExtensionContext) {
 	})
 
 	registerCommand("chooseSeparator", () => {
-		info(`${separator} chooseSeparator - TBI`)
+		vscode.window.showQuickPick(characters).then((char: string | undefined) => {
+			separator = char
+			setSeparator(`${char}`)
+		})
 	})
 
 	registerCommand("toggleChange", () => {
