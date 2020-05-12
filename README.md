@@ -44,4 +44,10 @@ Toggles run on startup (Default: `true`)
 ### Mode `.mode`
 Either `cycle` or `random` on startup (Default: `random`)
 
+### Override separator list `.overrideSeparatorList`
+If true - use `.manualSeparatorList` instead of in-built `characters.json` (Default: `false`)
+
+### Manual separator list `.manualSeparatorList`
+List of characters to use instead of the in-built `characters.json` (if `overrideSeparatorList` is true & list != empty) (Default: `[]`)
+
 

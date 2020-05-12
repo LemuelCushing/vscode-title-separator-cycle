@@ -44,6 +44,7 @@
 			"title": "Title Separator Cycle",
 			"properties": {
 				"title-separator-cycle.mode": {
+					"title": "Mode",
 					"type": "string",
 					"default": "random",
 					"enum": [
@@ -57,9 +58,22 @@
 					"description": "Cycle or random?"
 				},
 				"title-separator-cycle.runOnStartup": {
+					"title": "Run on startup",
 					"type": "boolean",
 					"default": true,
 					"description": "Toggle run on startup"
+				},
+				"title-separator-cycle.overrideSeparatorList": {
+					"title": "Override separator list",
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "If true - use `#title-separator-cycle.manualSeparatorList#` instead of in-built `characters.json`"
+				},
+				"title-separator-cycle.manualSeparatorList": {
+					"title": "Manual separator list",
+					"type": "array",
+					"default": [],
+					"markdownDescription": "List of characters to use instead of the in-built `characters.json` (if `#title-separator-cycle.overrideSeparatorList#` is true & list != empty)"
 				}
 			}
 		}

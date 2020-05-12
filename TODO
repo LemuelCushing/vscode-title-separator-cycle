@@ -1,1 +1,4 @@
-✔ Since `@types/vscode@^1.45.0` is still not available, this package requires 1.44.0 - a version without the `window.titleSeparator` option. Thererfore, update the deps when it IS available @done(20-05-12 12:40)
+✔ Since `@types/vscode@^1.45.0` is still not available, this package requires 1.44.0 - a version without the `window.titleSeparator` option. Thererfore, update the deps when it IS available @done(20-05-12 19:26)
+
+☐ Add 'change to personalized list' option
+☐ Add tests
