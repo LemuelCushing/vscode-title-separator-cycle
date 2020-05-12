@@ -10,7 +10,10 @@ const workspaceConfig = vscode.workspace.getConfiguration()
 const mode: string | undefined = extPrefers.get("mode")
 let runOnStartup: boolean | undefined = extPrefers.get("runOnStartup")
 const getSeparator = (): string | undefined => workspaceConfig.get(titleSeparatorSetting)
-const setSeparator = (val: string): Thenable<void> => workspaceConfig.update(titleSeparatorSetting, ` ${val} `)
+const setSeparator = (val: string): Thenable<void> => {
+	separator = ` ${val} `
+	return workspaceConfig.update(titleSeparatorSetting, separator)
+}
 let separator: string | undefined = getSeparator()
 
 export function activate(context: vscode.ExtensionContext) {
@@ -23,12 +26,10 @@ export function activate(context: vscode.ExtensionContext) {
 	if (runOnStartup === true) {
 		switch (mode) {
 			case "cycle":
-				separator = getNextCharacter()
-				setSeparator(separator)
+				setSeparator(getNextCharacter())
 				break
 			default: // Case "random"
-				separator = getRandomCharacter()
-				setSeparator(separator)
+				setSeparator(getRandomCharacter())
 				break
 		}
 	}
@@ -42,17 +43,14 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	registerCommand("changeSeparatorRandom", () => {
-		separator = getRandomCharacter()
-		setSeparator(separator)
+		setSeparator(getRandomCharacter())
 	})
 	registerCommand("changeSeparatorCycle", () => {
-		separator = getNextCharacter()
-		setSeparator(separator)
+		setSeparator(getNextCharacter())
 	})
 
 	registerCommand("chooseSeparator", () => {
 		vscode.window.showQuickPick(characters).then((char: string | undefined) => {
-			separator = char
 			setSeparator(`${char}`)
 		})
 	})
