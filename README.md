@@ -23,18 +23,18 @@ The location of the separators is set by the native VSCode Window: Title (`windo
 ## Commands
 
 #### Toggle change upon startup
-Command: `changeSeparatorRandom`<br>
+Command: `toggleChange` <br>
 Toggles run on startup
 #### Change separator (Random)
-Command: `changeSeparatorCycle`<br>
+Command: `changeSeparatorRandom`<br>
 Even though the extension is called cycle, it randomizes by default, because random is magic!
 >What will it be next? Run bets with your friends! Could this become a terrible drinking game? Perhaps!
 #### Change separator (Cycle)
-Command: `chooseSeparator`<br>
+Command: `changeSeparatorCycle`<br>
 Cycles over the character list one by one (Even jumps to the start of the array! The thrill!)
 #### Choose separator from list
-Command: `toggleChange` <br>
-To be implemented
+Command: `chooseSeparator`<br>
+Manually select a separator from the list of available chars
 
 ## Options
 
