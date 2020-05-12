@@ -34,14 +34,6 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	}
 
-	function getRandomCharacter(): string {
-		return characters[Math.floor(Math.random() * characters.length)]
-	}
-	function getNextCharacter(): string {
-		let currentIndex = characters.indexOf(`${separator}`) + 1
-		return characters[currentIndex] ? characters[currentIndex] : characters[0]
-	}
-
 	registerCommand("changeSeparatorRandom", () => {
 		setSeparator(getRandomCharacter())
 	})
@@ -63,3 +55,11 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() { }
+
+function getRandomCharacter(): string {
+	return characters[Math.floor(Math.random() * characters.length)]
+}
+function getNextCharacter(): string {
+	let currentIndex = characters.indexOf(`${separator}`) + 1
+	return characters[currentIndex] ? characters[currentIndex] : characters[0]
+}
