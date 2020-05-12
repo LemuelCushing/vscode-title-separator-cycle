@@ -16,7 +16,7 @@ The reviewers are ecstatic:
 
 See those terrible dashes between the file name and the workspace name on the title bar? (If you kept the default settings, I mean) The gods have smiled on us and allowed us to change them, thanks to the important initiative of a brave few. Blessed be microsoft, giver of community driven tools, who ask nothing in return but huge profits. Amen.
 
-Uh, anyway this extension changes that separator to a random/cycled one from a list of cool and edgy unicode & emoji, currently stored in a separate  `characters.json` file. This fact might change, because it's probably a stupid way to do it.
+Uh, anyway this extension changes that separator to a random/cycled one from a list of cool and edgy unicode & emoji, currently stored in a separate  (`characters.json`)[https://github.com/LemuelCushing/vscode-title-separator-cycle/blob/master/src/characters.json] file. This fact might change, because it's probably a stupid way to do it.
 
 The location of the separators is set by the native VSCode Window: Title (`window.title`) setting
 
