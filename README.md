@@ -50,4 +50,4 @@ If true - use `.manualSeparatorList` instead of in-built `characters.json` (Defa
 ### Manual separator list `.manualSeparatorList`
 List of characters to use instead of the in-built `characters.json` (if `overrideSeparatorList` is true & list != empty) (Default: `[]`)
 
-
+[Check the contribution tab for the others]

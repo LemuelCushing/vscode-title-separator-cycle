@@ -1,20 +1,47 @@
 import * as vscode from 'vscode'
 import { characters } from "./characters.json"
+import * as fs from 'fs'
 
 let info = (msg: string): Thenable<String | undefined> => vscode.window.showInformationMessage(msg)
 
 //Configurations getters & setters
 const titleSeparatorSetting: string = "window.titleSeparator"
 const extPrefers = vscode.workspace.getConfiguration("title-separator-cycle")
+
 const workspaceConfig = vscode.workspace.getConfiguration()
-const mode: string | undefined = extPrefers.get("mode")
+const cycleMode: string = extPrefers.get("cycleMode") || "random"
 let runOnStartup: boolean | undefined = extPrefers.get("runOnStartup")
+const overrideSeparatorList: boolean = extPrefers.get("overrideSeparatorList") || false
+const manualList = extPrefers.get("manualSeparatorList") as string[]
+
 const getSeparator = (): string | undefined => workspaceConfig.get(titleSeparatorSetting)
 const setSeparator = (val: string): Thenable<void> => {
 	separator = ` ${val} `
-	return workspaceConfig.update(titleSeparatorSetting, separator)
+	info(`Changed to ${separator}`)
+	let target = extPrefers.get("configTarget") as string
+	let options = vscode.ConfigurationTarget.Workspace
+	switch (target) {
+		case "user":
+			options = vscode.ConfigurationTarget.Global
+			break
+		case "workspaceIfExists":
+			if (fs.existsSync(".vscode/settings.json")) {
+				options = vscode.ConfigurationTarget.Workspace
+			} else {
+				options = vscode.ConfigurationTarget.Global
+			}
+	}
+	return workspaceConfig.update(titleSeparatorSetting, separator, options)
 }
 let separator: string | undefined = getSeparator()
+
+let characterSource = characters
+//FIXME: This does not actually refresh when already open 🤔
+let refreshManualList = (): void => {
+	if (overrideSeparatorList && manualList.length > 0) { characterSource = manualList! as string[] } else {
+		characterSource = characters
+	}
+}
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -24,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	if (runOnStartup === true) {
-		switch (mode) {
+		switch (cycleMode) {
 			case "cycle":
 				setSeparator(getNextCharacter())
 				break
@@ -42,7 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
 	})
 
 	registerCommand("chooseSeparator", () => {
-		vscode.window.showQuickPick(characters).then((char: string | undefined) => {
+		vscode.window.showQuickPick(characterSource).then((char: string | undefined) => {
 			setSeparator(`${char}`)
 		})
 	})
@@ -57,9 +84,13 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() { }
 
 function getRandomCharacter(): string {
-	return characters[Math.floor(Math.random() * characters.length)]
+	refreshManualList()
+	return characterSource[Math.floor(Math.random() * characterSource.length)]
 }
+
+//FIXME: fix this for manual list - always reverts to start for some reason
 function getNextCharacter(): string {
-	let currentIndex = characters.indexOf(`${separator}`) + 1
-	return characters[currentIndex] ? characters[currentIndex] : characters[0]
+	refreshManualList()
+	let currentIndex = characterSource.indexOf(`${separator}`) + 1
+	return characterSource[currentIndex] ? characterSource[currentIndex] : characterSource[0]
 }

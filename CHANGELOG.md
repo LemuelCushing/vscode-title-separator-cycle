@@ -1,8 +1,9 @@
 # Change Log
 
-All notable changes to the "title-separator-cycle" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+# 0.5.1
+* Added (still buggy) manual separator list
+* Fixed the annoying addition of .vscode to any folder opened in code because I:
+* Added `configTarget` option to enable change in `.vscode/settings.json` only if it exists
 
 ## [Unreleased]
 

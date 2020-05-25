@@ -3,7 +3,7 @@
 	"displayName": "Title Separator Cycle",
 	"description": "An essential tool - changes the title separator upon startup",
 	"publisher": "LemuelCushing",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
@@ -22,8 +22,7 @@
 		"vscode-extension"
 	],
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "title-separator-cycle.changeSeparatorRandom",
 				"title": "Title Separator: Change separator (Random)"
 			},
@@ -43,8 +42,8 @@
 		"configuration": {
 			"title": "Title Separator Cycle",
 			"properties": {
-				"title-separator-cycle.mode": {
-					"title": "Mode",
+				"title-separator-cycle.cycleMode": {
+					"title": "Cycle mode",
 					"type": "string",
 					"default": "random",
 					"enum": [
@@ -74,6 +73,22 @@
 					"type": "array",
 					"default": [],
 					"markdownDescription": "List of characters to use instead of the in-built `characters.json` (if `#title-separator-cycle.overrideSeparatorList#` is true & list != empty)"
+				},
+				"title-separator-cycle.configTarget": {
+					"title": "Configuration target",
+					"type": "string",
+					"default": "workspaceIfExists",
+					"enum": [
+						"user",
+						"workspace",
+						"workspaceIfExists"
+
+					],
+					"markdownEnumDescriptions": [
+						"Always to user settings (will change all instances when ran)",
+						"Always to workspace (⚠ will ALWAYS create a .vscode/settings.json file, whenever you open a folder!)",
+						"Will change the workspace setting, but only if it already exists"
+					]
 				}
 			}
 		}

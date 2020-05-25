@@ -1,4 +1,8 @@
 ✔ Since `@types/vscode@^1.45.0` is still not available, this package requires 1.44.0 - a version without the `window.titleSeparator` option. Thererfore, update the deps when it IS available @done(20-05-12 19:26)
 
 ☐ Add 'change to personalized list' option
-☐ Add tests
+☐ Add tests 
+  ☐ Figure out why tf does the title separator refuse to change in the tests (Do I seriously need to use https://developers.redhat.com/blog/2019/11/18/new-tools-for-automating-end-to-end-tests-for-vs-code-extensions/ ??)
+
+☐ Check if workspace has .vscode/settings.json - if not, change the global setting?
+  ☐ Remind the user to add her settings.json to .gitignore?
