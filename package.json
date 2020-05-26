@@ -36,7 +36,13 @@
 			},
 			{
 				"command": "title-separator-cycle.toggleChange",
-				"title": "Title Separator: Toggle change upon startup"
+				"title": "Title Separator: Toggle change upon startup",
+				"icon": "$(flame)"
+			},
+			{
+				"command": "title-separator-cycle.changeTheme",
+				"title": "Title Separator: Change theme",
+				"icon": "$(star-half~spin)"
 			}
 		],
 		"configuration": {
@@ -89,7 +95,20 @@
 						"Always to workspace (⚠ will ALWAYS create a .vscode/settings.json file, whenever you open a folder!)",
 						"Will change the workspace setting, but only if it already exists"
 					]
+				},
+				"title-separator-cycle.changeThemes": {
+					"title": "Change themes on startup",
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Idiotic - also changes theme for each window, based on `title-separator-cycle.themeList`"
+				},
+				"title-separator-cycle.themeList": {
+					"title": "Theme list",
+					"type": "array",
+					"default": [],
+					"markdownDescription": "List of themes to iterate over for every new window"
 				}
+
 			}
 		}
 	},
